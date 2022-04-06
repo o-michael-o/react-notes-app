@@ -14,38 +14,58 @@ body {
   font-size: 16px;
 }
 
+// UTILITIES
+
+// save button
+.save {
+  background: #e1e1e1;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 10px;
+
+  &:hover {
+    background: #ededed;
+    cursor: pointer;
+  }
+}
+
+.dark-mode {
+  background: #000;
+
+  h1 {
+    color: #fff;
+  }
+}
+
+// main styles
+
 .container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 15px;
-}
+  padding: 1rem 1rem;
+  min-height: 100vh;
 
-.notes-list {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+  }
 
-.note {
-  background: #fef68a;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  padding: 1rem;
-  min-height: 170px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  white-space: pre-wrap;
+  .search {
+    display: flex;
+    align-self: start;
+    background: rgb(233, 233, 233);
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    padding: 10px;
 
-  &.new {
-    background: #67d7cc;
-
-    textarea {
+    input {
+      margin-left: 0.75rem;
       border: none;
-      resize: none;
-      background: #67d7cc;
-      font-family: "Montserat", sans-serif;
-      font-size: 1rem;
+      background: inherit;
+      width: 100%;
+      font-size: 1.1rem;
 
       &:focus {
         outline: none;
@@ -53,28 +73,50 @@ body {
     }
   }
 
-  .note-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .notes-list {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
-    .save {
-      background: #e1e1e1;
-      border: none;
-      border-radius: 15px;
-      padding: 5px 10px;
+    .note {
+      background: #fef68a;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      padding: 1rem;
+      min-height: 170px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      white-space: pre-wrap;
 
-      &:hover {
-        background: #ededed;
-        cursor: pointer;
+      &.new {
+        background: #67d7cc;
+        max-height: 170px;
+
+        textarea {
+          border: none;
+          resize: none;
+          background: #67d7cc;
+          font-family: "Montserat", sans-serif;
+          font-size: 1rem;
+          &:focus {
+            outline: none;
+          }
+        }
       }
-    }
 
-    .delete-icon {
-      cursor: pointer;
+      .note-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-      &:hover {
-        color: darkgrey;
+        .delete-icon {
+          cursor: pointer;
+
+          &:hover {
+            color: darkgrey;
+          }
+        }
       }
     }
   }
