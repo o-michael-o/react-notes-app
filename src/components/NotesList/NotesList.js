@@ -1,4 +1,5 @@
-import Note from "../Note/Notes";
+import Note from "../Note/Note";
+import AddNote from "../AddNote/AddNote";
 
 const NotesList = ({ notes }) => {
   return (
@@ -6,6 +7,7 @@ const NotesList = ({ notes }) => {
       {notes.map((note) => (
         <Note key={note.id} text={note.text} date={note.date} />
       ))}
+      <AddNote />
     </div>
   );
 };
