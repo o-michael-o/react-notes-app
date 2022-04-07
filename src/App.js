@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
 import Header from "./components/Header/Header";
@@ -6,32 +6,22 @@ import NotesList from "./components/NotesList/NotesList";
 import Search from "./components/Search/Search";
 
 const App = () => {
-  const [notes, setNotes] = useState([
-    {
-      id: nanoid(),
-      text: "Learn React.js",
-      date: "15/04/2022",
-    },
-    {
-      id: nanoid(),
-      text: "Build stuff",
-      date: "16/04/2022",
-    },
-    {
-      id: nanoid(),
-      text: "Get Job",
-      date: "17/04/2022",
-    },
-    {
-      id: nanoid(),
-      text: "Move House",
-      date: "20/06/2022",
-    },
-  ]);
-
-  const [searchText, setSearchText] = useState("");
   const [darkMode, setDarkMode] = useState(false);
+  const [notes, setNotes] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
+  // get notes from local storage when app loads
+  useEffect(() => {
+    const notesFromLocalStorage = JSON.parse(
+      localStorage.getItem("react-notes-app-data")
+    );
+
+    if (notesFromLocalStorage) {
+      setNotes(notesFromLocalStorage);
+    }
+  }, []);
+
+  // add a note to state
   const addNote = (text) => {
     const date = new Date();
     const newNote = {
@@ -41,11 +31,14 @@ const App = () => {
     };
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
+    localStorage.setItem("react-notes-app-data", JSON.stringify(newNotes));
   };
 
+  // delete a note from the state
   const deleteNote = (id) => {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
+    localStorage.setItem("react-notes-app-data", JSON.stringify(newNotes));
   };
 
   return (

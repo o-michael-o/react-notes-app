@@ -24,7 +24,6 @@ const AddNote = ({ handleAddNote }) => {
         name=""
         id=""
         cols="10"
-        rows="8"
         placeholder="Add a new note"
         onChange={handleChange}
         value={noteText}
