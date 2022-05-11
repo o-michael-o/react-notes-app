@@ -1,3 +1,12 @@
+@import "./colors";
+
+/* COLOR THEME  */
+// $charleston-green: hsla(195, 56%, 10%, 1);
+// $teal-blue: hsla(195, 37%, 40%, 1);
+// $green-sheen: hsla(172, 25%, 55%, 1);
+// $ash-gray: hsla(90, 17%, 81%, 1);
+// $cornsilk: hsla(52, 67%, 89%, 1);
+
 *,
 *::before,
 *::after {
@@ -12,13 +21,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
+  background: $cornsilk;
 }
 
 // UTILITIES
 
 // save button
 .save {
-  background: #e1e1e1;
+  background: #f6f1d1;
   border: none;
   border-radius: 15px;
   padding: 5px 10px;
@@ -29,8 +39,21 @@ body {
   }
 }
 
+.dark-mode-btn {
+  background: $green-sheen;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 10px;
+
+  &:hover {
+    background: $charleston-green;
+    color: $cornsilk;
+    cursor: pointer;
+  }
+}
+
 .dark-mode {
-  background: #000;
+  background: $teal-blue;
 
   h1 {
     color: #fff;
@@ -79,7 +102,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
     .note {
-      background: #fef68a;
+      background: $ash-gray;
       margin-bottom: 10px;
       border-radius: 10px;
       padding: 1rem;
@@ -90,15 +113,17 @@ body {
       white-space: pre-wrap;
 
       &.new {
-        background: #67d7cc;
+        background: $charleston-green;
         max-height: 170px;
+        color: $cornsilk;
 
         textarea {
           border: none;
           resize: none;
-          background: #67d7cc;
+          background: $charleston-green;
           font-family: "Montserat", sans-serif;
           font-size: 1rem;
+          color: inherit;
           &:focus {
             outline: none;
           }
